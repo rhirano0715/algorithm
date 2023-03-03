@@ -3,8 +3,10 @@
 namespace Algorithm;
 public class Overview
 {
-    public T GetFirst<T>(IEnumerable<T> items)
+    public T GetFirst<T>(T[] items)
     {
-        return items.FirstOrDefault();
+        if (items.Length == 0)
+            throw new ArgumentException("items is Empty");
+        return items[0];
     }
 }

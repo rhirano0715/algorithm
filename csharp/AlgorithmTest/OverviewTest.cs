@@ -11,11 +11,22 @@ public class OverviewTest
         public class O1 
         {
             [Test]
-            public void GetFirst()
+            public void GetFirstIfTakesArrayWithOneOrMoreElementsThenReturnsTheFirstElement()
             {
                 var o = new Overview();
-                var input = new int[] { 1, 2 };
-                Assert.That(o.GetFirst(input), Is.EqualTo(1));
+                Assert.That(
+                    o.GetFirst(new int[] { 1, 2 }),
+                    Is.EqualTo(1)
+                );
+            }
+            [Test]
+            public void GetFirstIfTakesEmptyArrayThenReturnsNull()
+            {
+                var o = new Overview();
+                var actual = Assert.Throws<ArgumentException>(
+                    () => o.GetFirst(new int[] { })
+                );
+                Assert.That(actual.Message, Is.EqualTo("items is Empty"));
             }
         }
     }
