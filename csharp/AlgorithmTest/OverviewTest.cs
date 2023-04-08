@@ -7,7 +7,8 @@ public class OverviewTest
     {
     }
 
-    public class BigO { 
+    public class BigO
+    {
         public class O1 
         {
             [Test]
@@ -28,6 +29,26 @@ public class OverviewTest
                 );
                 Assert.That(actual.Message, Is.EqualTo("items is Empty"));
             }
+        }
+    }
+
+    public class Swap
+    {
+
+        [Test]
+        public void SwapXandY()
+        {
+            var o = new Overview();
+            var values = new Dictionary<string, int>()
+            {
+                { "key1", 1},
+                { "key2", 2},
+            };
+
+            o.Swap(values, "key1", "key2");
+
+            Assert.That(values["key1"], Is.EqualTo(2), "x");
+            Assert.That(values["key2"], Is.EqualTo(1), "x");
         }
     }
 }
